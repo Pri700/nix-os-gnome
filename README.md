@@ -14,8 +14,8 @@ Welcome to the NixOS GNOME Configuration repository! This project provides a str
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/nixos-gnome-config.git
-   cd nixos-gnome-config
+   git clone https://github.com/Pri700/nix-os-gnome.configfile
+   cd nix-os-gnome.configfile
    ```
 
 2. **Edit Configuration**: Customize `configuration.nix` to suit your preferences.
