@@ -2,6 +2,14 @@
 
 Welcome to the NixOS GNOME Configuration repository! This project provides a streamlined setup for running the GNOME desktop environment on NixOS, offering a customizable and efficient user experience.
 
+
+![Screenshot from 2024-09-19 05-45-15](https://github.com/user-attachments/assets/a071a65b-e64c-4d67-b452-a3c3bdca82a6)
+![Screenshot from 2024-09-19 05-45-03](https://github.com/user-attachments/assets/166a22d6-3807-4a9e-9565-96f5f5fc2c17)
+![Screenshot from 2024-09-19 04-44-23](https://github.com/user-attachments/assets/29660488-1765-424a-a90e-fd2e91223d7a)
+
+
+
+
 ## Features
 
 - **Minimalistic Design**: Tailored GNOME experience with essential extensions and themes for a clean interface.
