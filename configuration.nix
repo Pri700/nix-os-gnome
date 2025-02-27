@@ -128,6 +128,11 @@ boot.kernelPackages = pkgs.linuxPackages_latest;
   pkgs.neofetch
   pkgs.anydesk
   pkgs.vscode
+  pkgs.obs-studio
+  pkgs.amberol
+  pkgs.klavaro
+  pkgs.tuxtype
+  pkgs.krita
   pkgs.shotcut
   #pkgs.google-chrome
   #pkgs.brave
