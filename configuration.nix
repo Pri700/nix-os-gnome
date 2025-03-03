@@ -109,6 +109,7 @@ boot.kernelPackages = pkgs.linuxPackages_latest;
   #  wget
   pkgs.micro
   pkgs.xonotic
+  pkgs.assaultcube
   pkgs.gnome-browser-connector
   pkgs.gnomeExtensions.gsconnect
   pkgs.gnomeExtensions.blur-my-shell
