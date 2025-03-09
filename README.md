@@ -34,7 +34,10 @@ PATH /etc/nixos/configuration.nix
    ```bash
    sudo nixos-rebuild switch
    ```
-
+4. **Nix File Location**:
+5. ```bash
+   /etc/nixos/configuration.nix
+   ```
 ## Contributing
 
 We welcome contributions! Feel free to submit issues or pull requests for improvements, additional features, or bug fixes.
