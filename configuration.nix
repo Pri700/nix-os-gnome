@@ -12,11 +12,23 @@ boot.kernelPackages = pkgs.linuxPackages_latest;
     ];
 
   # Bootloader.
+ /*
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "nixos"; # Define your hostname.
+  */
+  boot.loader.grub ={ enable = true; efiSupport = true; device = "nodev"; useOSProber = true; }; # For Grub 
+  boot.loader.efi.canTouchEfiVariables = true; #For Grub
+  
+   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+	boot.loader.grub.splashImage = "/boot/anime-nix-wallpaper-i-created-v0-0f6oxa9y9jlb1.png"; #grub boot menu picture
+	boot.plymouth.enable = true; # for playmouth logo
+
+	programs.nix-ld.enable = true;
+
+	#boot.plymouth.theme = "bgrt";
+	#config.boot.plymouth.theme == "breeze"
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -59,6 +71,9 @@ boot.kernelPackages = pkgs.linuxPackages_latest;
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  #Flatpak Service Enable
+  services.flatpak.enable = true;
+
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -81,23 +96,20 @@ boot.kernelPackages = pkgs.linuxPackages_latest;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pritam = {
     isNormalUser = true;
-    description = "Pritam Nix";
+    description = "Pritam";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
     ];
   };
 
-  programs.kdeconnect = {
+  # Install firefox.
+  programs.firefox.enable = true;
+
+   programs.kdeconnect = {
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;
   };
-
-   #program Fish enable
-  programs.fish.enable = true;
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -105,55 +117,81 @@ boot.kernelPackages = pkgs.linuxPackages_latest;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  pkgs.micro
-  pkgs.xonotic
-  pkgs.assaultcube
-  pkgs.gnome-browser-connector
-  pkgs.gnomeExtensions.gsconnect
-  pkgs.gnomeExtensions.blur-my-shell
-  pkgs.gnomeExtensions.dash-to-panel
-  pkgs.gnomeExtensions.compiz-windows-effect
-  pkgs.gnomeExtensions.coverflow-alt-tab
-  pkgs.gnome.gnome-boxes
-  pkgs.gnome.gnome-mahjongg
-  pkgs.gnome.gnome-chess
-  #pkgs.spotify
-  pkgs.parabolic
-  pkgs.git
-  pkgs.freetube
-  pkgs.signal-desktop
-  pkgs.wpsoffice
-  pkgs.hyfetch
-  pkgs.neofetch
-  pkgs.anydesk
-  pkgs.vscode
-  pkgs.obs-studio
-  pkgs.amberol
-  pkgs.klavaro
-  pkgs.tuxtype
-  pkgs.krita
-  pkgs.shotcut
-  #pkgs.google-chrome
-  #pkgs.brave
-  pkgs.obs-studio
-  pkgs.htop
-  pkgs.vlc
-  pkgs.whitesur-icon-theme
-  pkgs.bibata-cursors
-  pkgs.telegram-desktop
-  pkgs.spotify
-  pkgs.gimp
-  #pkgs.ventoy
-  #pkgs.freetube
-  pkgs.gnomeExtensions.gsconnect
-  pkgs.fish
-  pkgs.gparted
-  pkgs.gnome.gnome-tweaks
+  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  wget															#Download Online 
+  micro															#Terminal Esey Text Editor
+  neovim														#Text Editor
+  gnuchess
+  blender
+  # opera														#Chess Game
+  firefox-bin													#Firefox Perfect
+  xonotic
+  steam-run														#Single Person Shooting Game
+  #assaultcube
+  gnome-browser-connector										#Connect gnome With Browser(Firefox)
+  gnomeExtensions.gsconnect										#Connecting Android Mobile With Gnome Desktop
+  gnomeExtensions.blur-my-shell									#Gnome Extention for Blur Effect
+  gnomeExtensions.dash-to-panel									#For Dash To Pannel
+  gnomeExtensions.compiz-windows-effect							#For wabbily Windows
+  gnomeExtensions.coverflow-alt-tab	
+  hblock							#for Coverflow Windows
+  gnome-boxes
+  gnome-mahjongg
+  gnome-chess
+  papirus-icon-theme
+  #spotify
+  parabolic
+  heimdall
+  git
+  ventoy-full
+  #warp-terminal
+  rustc
+  rustup-toolchain-install-master
+  gnuchess
+  rustus
+  cargo
+  rustfmt
+  clippy
+  ruby 
+  bundler
+  rustup
+  pkgs.android-tools
+  adb-sync
+  #waydroid
+  freetube
+  signal-desktop
+  wpsoffice
+  hyfetch
+  neofetch
+  anydesk
+  #vscode
+  vscodium
+  obs-studio
+  amberol
+  klavaro
+  tuxtype
+  krita
+  shotcut
+  #google-chrome
+  #brave
+  obs-studio
+  appimage-run
+  htop
+  vlc
+  whitesur-icon-theme
+  bibata-cursors
+  telegram-desktop
+  gimp
+  #ventoy
+  gnomeExtensions.gsconnect
+  fish
+  gparted
+  gnome-tweaks
+  gnome-software
   ];
 
- virtualisation.libvirtd.enable = true;
+
+virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
   
  programs.bash = {
@@ -165,6 +203,7 @@ boot.kernelPackages = pkgs.linuxPackages_latest;
       fi
     '';
   };
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -191,6 +230,6 @@ boot.kernelPackages = pkgs.linuxPackages_latest;
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }
